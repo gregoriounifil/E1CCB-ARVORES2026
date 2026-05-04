@@ -10,11 +10,27 @@ public class No {
         this.direita = null;
     }
 
-    public int getConteudo() {
+    public Integer getConteudo() {
         return conteudo;
     }
 
     public void setConteudo(Integer conteudo) {
         this.conteudo = conteudo;
+    }
+
+    public No getDireita() {
+        return direita;
+    }
+
+    public void setDireita(No direita) {
+        this.direita = direita;
+    }
+
+    public No getEsquerda() {
+        return esquerda;
+    }
+
+    public void setEsquerda(No esquerda) {
+        this.esquerda = esquerda;
     }
 }
