@@ -1,4 +1,4 @@
-public class ArvoreBinaria {
+    public class ArvoreBinaria {
     No raiz;
 
     public ArvoreBinaria() {
@@ -7,9 +7,14 @@ public class ArvoreBinaria {
 
     public void inserir(Integer conteudo) {
         No novoNo = new No(conteudo);
-        //inserirRecursivo(novoNo, this.raiz);
-        inserirIterativo(novoNo);
+        inserirRecursivo(novoNo, this.raiz);
+        //inserirIterativo(novoNo);
     }
+
+        public void remover(Integer conteudo) {
+            No novoNo = new No(conteudo);
+            removerRecursivo(novoNo, this.raiz);
+        }
     private void inserirRecursivo(No no, No atual) {
         if(estaVazia()) {
             this.raiz = no;
@@ -108,4 +113,25 @@ public class ArvoreBinaria {
         posOrdem(no.getDireita());
         System.out.println(no.getConteudo());
     }
-}
+
+    private void removerRecursivo(No no, No atual) {
+        if (estaVazia()) {
+            return;
+        } else {
+            if (atual.getDireita() != null && atual.getEsquerda() != null) {
+                removerRecursivo(no, atual.getEsquerda());
+            } else if (atual.getEsquerda() != null) {
+                removerRecursivo(no, atual);
+            } else if (atual.getDireita() != null) {
+                removerRecursivo(no, atual);
+            } else {
+                if () {
+
+                }
+            }
+
+            }
+        }
+    }
+
+
