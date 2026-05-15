@@ -116,77 +116,86 @@
         }
 
         private void removerRecursivo(No no, No atual) {
-            if (atual == null) {
+            if (atual == null || no == null) {
                 return;
             }
-            if (no.getConteudo() > atual.getConteudo()) {
-                if  (atual.getDireita() != null && atual.getDireita().getConteudo() == no.getConteudo())
-                {
-                    No aux = atual.getDireita();
-                    if (aux.getEsquerda() == null && aux.getDireita() == null) {
-                        atual.setDireita(null);
-                        return;
-                    } else if (aux.getDireita() == null && aux.getEsquerda() != null) {
-                        atual.setDireita(aux.getEsquerda());
-                        return;
-                    } else if (aux.getDireita() != null && aux.getEsquerda() == null) {
-                        atual.setDireita(aux.getDireita());
-                        return;
-                    } else {
-                        No sucessor = aux.getDireita();
-                        while (sucessor.getEsquerda() != null) {
-                            sucessor = sucessor.getEsquerda();
-                        }
-                        removerRecursivo(sucessor, aux);
-                        aux.setConteudo(sucessor.getConteudo());
-                        return;
+
+            if (atual.getConteudo().equals(no.getConteudo())) {
+                if (atual.getEsquerda() == null && atual.getDireita() == null) {
+                    this.raiz = null;
+                } else if (atual.getEsquerda() == null && atual.getDireita() != null) {
+                    this.raiz = atual.getDireita();
+                } else if (atual.getEsquerda() != null && atual.getDireita() == null) {
+                    this.raiz = atual.getEsquerda();
+                } else {
+                    No sucessor = atual.getDireita();
+
+                    while (sucessor.getEsquerda() != null) {
+                        sucessor = sucessor.getEsquerda();
                     }
-                } else {
-                    No aux = atual.getEsquerda();
-                    if (aux.getDireita() == null && aux.getEsquerda() == null) {
-                        atual.setEsquerda(null);
-                        return;
-                    } else if (aux.getEsquerda() == null && aux.getDireita() != null) {
-                        atual.setEsquerda(aux.getDireita());
-                        return;
-                    } else if (aux.getEsquerda() != null && aux.getDireita() == null) {
-                        atual.setEsquerda(aux.getEsquerda());
-                        return;
-                    } else {
-                        No sucessor = aux.getDireita();
-                        while (sucessor.getEsquerda() != null) {
-                            sucessor = sucessor.getDireita();
-                        }
-                        removerRecursivo(sucessor, aux);
-                        aux.setConteudo(sucessor.getConteudo());
-                        return;
-                } }}}
-             /*   return;
-            } else if (no.getConteudo() < atual.getConteudo()) {
-                if  (atual.getEsquerda() != null && atual.getEsquerda().getConteudo() == no.getConteudo())
-                {
 
-                } else {
-                    removerRecursivo(no, atual.getEsquerda());
-                    return;
+                    atual.setConteudo(sucessor.getConteudo());
+                    removerRecursivo(sucessor, atual.getDireita());
                 }
+
                 return;
-            } else if (no.getConteudo() == atual.getConteudo()) {
-                    atual.get
-            }*/
-        }
+            }
 
-            /*if (atual.getDireita() != null && atual.getEsquerda() != null) {
-                removerRecursivo(no, atual.getEsquerda());
-            } else if (atual.getEsquerda() != null) {
-                removerRecursivo(no, atual);
-            } else if (atual.getDireita() != null) {
-                removerRecursivo(no, atual);
-            } else {
-                if () {
+            if (no.getConteudo() > atual.getConteudo()) {
+                if (atual.getDireita() != null) {
+                    if (atual.getDireita().getConteudo().equals(no.getConteudo())) {
+                        No aux = atual.getDireita();
 
+                        if (aux.getEsquerda() == null && aux.getDireita() == null) {
+                            atual.setDireita(null);
+                        } else if (aux.getDireita() == null && aux.getEsquerda() != null) {
+                            atual.setDireita(aux.getEsquerda());
+                        } else if (aux.getDireita() != null && aux.getEsquerda() == null) {
+                            atual.setDireita(aux.getDireita());
+                        } else {
+                            No sucessor = aux.getDireita();
+
+                            while (sucessor.getEsquerda() != null) {
+                                sucessor = sucessor.getEsquerda();
+                            }
+
+                            aux.setConteudo(sucessor.getConteudo());
+                            removerRecursivo(sucessor, aux.getDireita());
+                        }
+                    } else {
+                        removerRecursivo(no, atual.getDireita());
+                    }
+                }
+
+                return;
+
+            } else if (no.getConteudo() < atual.getConteudo()) {
+                if (atual.getEsquerda() != null) {
+                    if (atual.getEsquerda().getConteudo().equals(no.getConteudo())) {
+                        No aux = atual.getEsquerda();
+
+                        if (aux.getDireita() == null && aux.getEsquerda() == null) {
+                            atual.setEsquerda(null);
+                        } else if (aux.getEsquerda() == null && aux.getDireita() != null) {
+                            atual.setEsquerda(aux.getDireita());
+                        } else if (aux.getEsquerda() != null && aux.getDireita() == null) {
+                            atual.setEsquerda(aux.getEsquerda());
+                        } else {
+                            No sucessor = aux.getDireita();
+
+                            while (sucessor.getEsquerda() != null) {
+                                sucessor = sucessor.getEsquerda();
+                            }
+
+                            aux.setConteudo(sucessor.getConteudo());
+                            removerRecursivo(sucessor, aux.getDireita());
+                        }
+                    } else {
+                        removerRecursivo(no, atual.getEsquerda());
+                    }
                 }
             }
 
-            }
-        }*/
+            return;
+        }
+    }

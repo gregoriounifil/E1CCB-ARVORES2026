@@ -12,5 +12,11 @@ public class Main {
         arvoreBinaria.inserir(67);
         arvoreBinaria.inserir(122);
         arvoreBinaria.exibir("Pos");
+        System.out.println("--------------------------");
+        arvoreBinaria.remover(6);
+        arvoreBinaria.remover(67);
+        arvoreBinaria.remover(17);
+        arvoreBinaria.remover(42);
+        arvoreBinaria.exibir("Pos");
     }
 }
